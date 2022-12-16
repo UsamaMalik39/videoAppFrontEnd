@@ -1,0 +1,140 @@
+<nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top justify-content-between">
+   <div>
+      <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
+         <i class="fas fa-bars"></i>
+         </button> &nbsp;&nbsp;
+         <a class="navbar-brand mr-1"  routerLink="/dashboard">Video</a>
+   </div>
+ 
+   <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
+      <li class="nav-item mx-1">
+         <a class="nav-link" routerLink="/dashboard/upload">
+         <i class="fas fa-plus-circle fa-fw"></i>
+         Upload Video
+         </a>
+      </li>
+      <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
+         <a class="nav-link dropdown-toggle user-dropdown-link" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img alt="Avatar" src="../../../../assets/img/user.svg"> 
+         {{ userName | titlecase}}
+         </a>
+      </li>
+   </ul>
+</nav>
+<div id="wrapper">
+   <div id="content-wrapper">
+     <form [formGroup]="uploadFileForm" (ngSubmit)="uploadFile()">
+       <div class="container-fluid upload-details">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="main-title">
+                  <h6>Upload Details</h6>
+               </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="osahan-form">
+                     <div class="form-group">
+                        <label for="">Upload Video</label>
+                        <input type="file"
+                         placeholder="Select Video" 
+                         (change)="uploadMediaFile($event)" 
+                         class="email form-control" accept="video/mp4,video/x-m4v,video/*">
+                     </div>
+                </div>
+              
+            </div>
+            <div class="col-lg-6">
+                 <div class="osahan-form">
+                       <div class="form-group">
+                         <label for="">Upload Thumbnail</label>
+                         <input type="file" placeholder="Select Thumbnail"
+                          (change)="uploadThumbnailFile($event)" class="email form-control"
+                           accept="image/x-png,image/jpeg">
+                       </div>
+                 </div>
+                             
+            
+           </div>
+            <div class="col-lg-12" *ngIf="videoLoading">
+               <div class="osahan-desc">Your Video is still uploading, please keep this page open until it's done.</div>
+            </div>
+         </div>
+         <hr>
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="osahan-form">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group">
+                           <label for="e1">Video Title</label>
+                           <input type="text" formControlName="title" placeholder="Enter video title" id="e1" class="form-control">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-5">
+                        <div class="form-group">
+                           <label for="e7">Producer</label>
+                           <input type="text" formControlName="producer" placeholder="Enter producer name" id="e7" class="form-control">
+                        </div>
+                     </div>
+                     <div class="col-lg-4">
+                       <div class="form-group">
+                         <label for="e4">Genre</label>
+                         <select id="e4" class="custom-select" formControlName="genre">
+                            <option value="" disabled="true">Select Genre</option>
+                            <option value="Action">Action</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Thriller">Thriller</option>
+                         </select>
+                       </div>
+                     </div>
+                     <div class="col-lg-3">
+                        <div class="form-group">
+                           <label for="e9">Age Rating</label>
+                           <select id="e9" class="custom-select"  placeholder="Select Age Rating"
+                             formControlName="rating">
+                             <option value="" disabled="true">Select Age Rating</option>
+                             <option value="PG">PG</option>
+                             <option value="18+">18+</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="osahan-area text-center mt-3">
+                  <button class="btn btn-outline-primary" type="submit">Upload Video</button>
+               </div>
+               <hr>
+            </div>
+         </div>
+      </div>
+     </form>
+      
+   </div>
+ </div>
+ <a class="scroll-to-top rounded" href="#page-top">
+ <i class="fas fa-angle-up"></i>
+ </a>
+ <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+            </button>
+         </div>
+         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+         <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+         </div>
+      </div>
+   </div>
+ </div>
+ 
