@@ -41,8 +41,8 @@ export class VideoModelComponent implements OnInit {
     
     this._dashboardService.addNewComment(this.videoID,this.newComment).subscribe((x:any)=>{
       if(x.success && x.data){
-
-        this.videoData.comments.push(x.data.newComment) 
+        
+        this.videoData.comments.push(x.data) 
         this.newComment='';
         
       }

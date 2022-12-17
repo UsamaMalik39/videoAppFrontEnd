@@ -9,21 +9,10 @@
                   <a  [routerLink]="['/dashboard']" routerLinkActive="router-link-active" > VidForm</a>
             </div>
         </div>
-        <!-- search container -->
-        <div class="hidden md:flex items-center space-x-2 w-1/2">
-            <!-- input box -->
-            <div class="flex items-center flex-auto justify-between rounded border">
-                <input class=" w-full rounded-l outline-none border-none p-0.5 pl-3 placeholder-gray-500" 
-                type="text" placeholder="Search"
-                [(ngModel)]="searchString">
-                
-                <i class="material-icons md-21 text-center rounded-r hover:text-white p-1 w-20 cursor-pointer" (click)="searchMovie()">search</i>
-            </div>
-        </div>
 
         <!-- right icons container  -->
         <div class="flex items-center space-x-3 sm:space-x-6 pr-4">
-            <i class="material-icons cursor-pointer" [routerLink]="['/dashboard/upload']" routerLinkActive="router-link-active" *ngIf="isCreator" >video_call</i>
+            <i class="material-icons cursor-pointer" [routerLink]="['/dashboard/upload']" routerLinkActive="router-link-active" >video_call</i>
 
             <img class="w-9 h-9 rounded-full object-cover cursor-pointer" src="./assets/images/hero.png" alt="" draggable="false">
         </div>
@@ -43,20 +32,6 @@
      <div class="flex flex-col lg:ml-60 w-full lg:w-4/5 xl:w-5/6">
         
           
-     <!-- tags pills fixed navbar -->
-     <div class="tags-container">
- 
-         <!-- one pill -->
-         <button class="text-sm"
-         [ngClass]="selectedTab==0 ? 
-                    ' bg-black py-1.5 px-3 rounded-full text-white '  : 
-                    ' bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150 ' " (click)="changeGenre(0)">All</button>
-         <button class="text-sm" *ngFor="let item of genreList"
-         [ngClass]="selectedTab==item.id ? 
-                    ' bg-black py-1.5 px-3 rounded-full text-white '  : 
-                    ' bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150 ' " (click)="changeGenre(item.id)">{{ item.genre | titlecase  }}</button>
-       </div>
- 
      <!-- videos container grid layout -->
      <div class="videos-container" id="videos-container">
          <!-- one video card -->

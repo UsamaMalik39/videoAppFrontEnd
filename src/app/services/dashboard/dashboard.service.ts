@@ -22,5 +22,8 @@ export class DashboardService {
         let data={videoID,comment}
         return this._dataService.genericServiceCaller(REQUESTTYPE.POST, `dashboard/add-new-comment`,data)
     }
+    getMyVideos(){
+        return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `dashboard/get-my-videos`)
+    }
     
 }

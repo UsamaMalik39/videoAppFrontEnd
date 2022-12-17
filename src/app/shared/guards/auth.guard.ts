@@ -28,7 +28,6 @@ export class AuthGuard implements CanActivate,CanActivateChild {
 
 
   async checkLogin(url: string): Promise<boolean> {
-    
     let data :any = this.getQueryParams(url);
     if(data.hasOwnProperty('access_token')){
       let result = this.jwtHelper.decodeToken(data['access_token']);
@@ -62,7 +61,7 @@ export class AuthGuard implements CanActivate,CanActivateChild {
     this._userService.email = user.email;
     this._userService.legalName = user.name;
     this._userService.userID = user.id;
-    this._userService.isCreator = user.type=='VIEWER' ? false:true;
+    this._userService.isCreator = user.isCreator==0 ? false:true;
 
     this.router.navigate(['dashboard']);
   }

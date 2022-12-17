@@ -12,7 +12,7 @@
 
        <!-- right icons container  -->
        <div class="flex items-center space-x-3 sm:space-x-6 pr-4">
-           <i class="material-icons cursor-pointer">video_call</i>
+           <i class="material-icons cursor-pointer" *ngIf="isCreator">video_call</i>
 
            <img class="w-9 h-9 rounded-full object-cover cursor-pointer" src="./assets/images/hero.png" alt="" draggable="false">
        </div>
@@ -45,12 +45,12 @@
                      <div class="block-header">
                         <div class="title">
                            <h2>Comments</h2>
-                           <div class="tag">12</div>
+                           <div class="tag" *ngIf="videoData.comments">{{ videoData.comments.length }}</div>
                         </div>
                      </div>
                      <div class="writing">
                         <div contenteditable="true" [(ngModel)]="newComment" class="textarea" autofocus spellcheck="false">
-                           <p>{{newComment}} </p>
+                           {{newComment}} 
                         </div>
                         <div class="footer">
                            <div class="group-button">

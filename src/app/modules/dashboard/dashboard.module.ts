@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VideoModelComponent } from './video-model/video-model.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
+import { MyVideosComponent } from './my-videos/my-videos/my-videos.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HeaderComponent } from './header/header.component';
     UploadVideoComponent,
     VideoModelComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    MyVideosComponent
   ],
   imports: [
     PipesModule,

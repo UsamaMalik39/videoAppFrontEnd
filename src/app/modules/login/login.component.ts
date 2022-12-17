@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
     this._userService.email = user.email;
     this._userService.legalName = user.name;
     this._userService.userID = user.id;
-    this._userService.isCreator = user.isCreator
+    this._userService.isCreator = user.isCreator==0 ? false:true
 
     this.router.navigate(['dashboard']);
 

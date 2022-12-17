@@ -13,6 +13,8 @@ import { genreList } from '../dashboard-overview/dashboard-overview.component';
 })
 export class UploadVideoComponent implements OnInit {
   userName:string='';
+  isCreator:boolean=false;
+
   constructor(private _fileService:FileService,private fb: FormBuilder,
     private router:Router, private _userService:UserServiceService,
     private _dashboardService:DashboardService) { }
@@ -26,6 +28,8 @@ export class UploadVideoComponent implements OnInit {
     this.initializeForm();
     this.getGenreList()
     this.userName=this._userService.legalName;
+    this.isCreator=this._userService.isCreator;
+
   }
 
   uploadFile(){

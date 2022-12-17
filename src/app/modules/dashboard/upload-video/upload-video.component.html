@@ -12,7 +12,7 @@
 
        <!-- right icons container  -->
        <div class="flex items-center space-x-3 sm:space-x-6 pr-4">
-           <i class="material-icons cursor-pointer">video_call</i>
+           <i class="material-icons cursor-pointer" *ngIf="isCreator">video_call</i>
 
            <img class="w-9 h-9 rounded-full object-cover cursor-pointer" src="./assets/images/hero.png" alt="" draggable="false">
        </div>
@@ -35,7 +35,7 @@
            <div class="row">
               <div class="col-lg-12">
                  <div class="mb-3">
-                    <h2>Upload Details</h2>
+                    <h2>Upload Your Video</h2>
                  </div>
               </div>
               <div class="col-lg-12 mb-3">
@@ -91,7 +91,9 @@
                            <select id="e9" class="form-control custom-select"  placeholder="Select Age Rating"
                              formControlName="rating">
                              <option value="" disabled="true">Select Age Rating</option>
+                             <option value="G">G</option>
                              <option value="PG">PG</option>
+                             <option value="PG-13">PG-13</option>
                              <option value="18+">18+</option>
                            </select>
                         </div>

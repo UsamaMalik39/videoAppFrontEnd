@@ -25,7 +25,7 @@ export class SidebarComponent implements OnInit {
     this.isCreator=this._userService.isCreator;
   }
 
-  logOut(){
+  signOut(){
     localStorage.setItem("access_token", '');
     this.router.navigate(['login']);
 
