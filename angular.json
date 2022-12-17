@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "writesFrontENd": {
+    "videoAppFrontEnd": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "writesFrontENd:build:production"
+              "browserTarget": "videoAppFrontEnd:build:production"
             },
             "development": {
-              "browserTarget": "writesFrontENd:build:development"
+              "browserTarget": "videoAppFrontEnd:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "writesFrontENd:build"
+            "browserTarget": "videoAppFrontEnd:build"
           }
         },
         "test": {
