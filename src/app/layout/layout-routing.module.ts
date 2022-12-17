@@ -1,4 +1,3 @@
-import { VideoDashboardModule } from './../modules/video-dashboard/video-dashboard.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
@@ -14,10 +13,6 @@ const routes: Routes = [
         path: 'dashboard', 
         loadChildren: () => import('../modules/dashboard/dashboard.module').then(m => m.DashboardModule),
 
-      },
-      {
-        path: 'video', 
-        loadChildren: () => import('../modules/video-dashboard/video-dashboard.module').then(m => m.VideoDashboardModule),
       }
     ]
   } 
