@@ -12,7 +12,7 @@ export class VideoModelComponent implements OnInit {
 
   videoID:any=null;
   videoData:mediData=new mediData();
-  newComment:string='';
+  newComment:string='Hi';
   userName:string='';
   isCreator:boolean=false;
 

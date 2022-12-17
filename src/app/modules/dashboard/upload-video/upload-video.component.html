@@ -1,5 +1,24 @@
  <!-- top fixed navbar -->
- <app-header></app-header>
+ <nav class=" w-full p-1 fixed top-0 z-20">
+   <!-- navbar container -->
+   <div class="flex justify-between items-center px-2 sm:px-6 py-1.5 mx-auto">
+       <!-- logo container -->
+       <div class="flex items-center space-x-3">
+           <div class="flex cursor-pointer"><i class="material-icons">menu</i></div>
+           <div class="w-22 h-5">
+                 <a  [routerLink]="['/dashboard']" routerLinkActive="router-link-active" > VidForm</a>
+           </div>
+       </div>
+
+       <!-- right icons container  -->
+       <div class="flex items-center space-x-3 sm:space-x-6 pr-4">
+           <i class="material-icons cursor-pointer">video_call</i>
+
+           <img class="w-9 h-9 rounded-full object-cover cursor-pointer" src="./assets/images/hero.png" alt="" draggable="false">
+       </div>
+
+   </div>
+</nav>
  <!-- navbar ends here -->
 
  <!-- main container -->
@@ -62,13 +81,7 @@
                          <label for="e4">Genre</label>
                          <select id="e4" class="form-control custom-select" formControlName="genre">
                             <option value="" disabled="true">Select Genre</option>
-                            <option value="Action">Action</option>
-                            <option value="Comedy">Comedy</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="Horror">Horror</option>
-                            <option value="Mystery">Mystery</option>
-                            <option value="Thriller">Thriller</option>
+                            <option *ngFor="let item of genreList" [value]="item.id">{{item.genre | titlecase}}</option>
                          </select>
                        </div>
                      </div>

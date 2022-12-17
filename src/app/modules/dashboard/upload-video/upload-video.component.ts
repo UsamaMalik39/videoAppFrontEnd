@@ -1,8 +1,10 @@
+import { DashboardService } from './../../../services/dashboard/dashboard.service';
 import { Router } from '@angular/router';
 import { FileService } from './../../../services/file/file.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
+import { genreList } from '../dashboard-overview/dashboard-overview.component';
 
 @Component({
   selector: 'app-upload-video',
@@ -12,13 +14,17 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 export class UploadVideoComponent implements OnInit {
   userName:string='';
   constructor(private _fileService:FileService,private fb: FormBuilder,
-    private router:Router, private _userService:UserServiceService) { }
+    private router:Router, private _userService:UserServiceService,
+    private _dashboardService:DashboardService) { }
   uploadFileForm: FormGroup = new FormGroup({});
   formData = new FormData();
   thumbnailFile:any={};
   videoLoading:boolean=false;
+  genreList: genreList[]=[]
+
   ngOnInit(): void {
     this.initializeForm();
+    this.getGenreList()
     this.userName=this._userService.legalName;
   }
 
@@ -61,6 +67,14 @@ export class UploadVideoComponent implements OnInit {
   uploadThumbnailFile(event:any){
     const files = event.target.files;
     this.thumbnailFile=files[0];
+  }
+
+  getGenreList(){
+    this._dashboardService.getGenreList().subscribe((x:any)=>{
+      if(x.success && x.data){
+        this.genreList=x.data;
+      }
+    })
   }
 
 }

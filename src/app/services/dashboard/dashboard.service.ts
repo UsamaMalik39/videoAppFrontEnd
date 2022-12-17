@@ -8,11 +8,11 @@ export class DashboardService {
 
     constructor(private _dataService: DataService){}
 
-    getDashboardData(searchString:string){
-        return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `dashboard/get-dashboard-data?searchString=${searchString}`)
+    getDashboardData(searchString:string,genreID:number){
+        return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `dashboard/get-dashboard-data?searchString=${searchString}&genreID=${genreID}`)
     }
-    getDashboardStats(){
-        return this._dataService.genericServiceCaller(REQUESTTYPE.GET, 'dashboard/get-stats')
+    getGenreList(){
+        return this._dataService.genericServiceCaller(REQUESTTYPE.GET, 'dashboard/get-genre-list')
     }
     getVideoData(videoID:number){
         return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `dashboard/get-video-data?videoID=${videoID}`)

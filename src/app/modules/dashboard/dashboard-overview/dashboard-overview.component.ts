@@ -15,8 +15,9 @@ export class DashboardOverviewComponent implements OnInit {
   openDropDown:boolean=false;
   searchString:string='';
   isCreator:boolean=false;
-  selectedTab:string='ALL';
-  dashboardStata: dashboardStatsData=new dashboardStatsData()
+  selectedTab:number=0;
+  genreList: genreList[]=[];
+  isLoading:boolean=true;
   constructor(                    
     private router:Router,
     private _dashboardService:DashboardService,
@@ -25,38 +26,39 @@ export class DashboardOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
-    this.getStats()
+    this.getGenreList()
     this.userName=this._userService.legalName;
     this.isCreator=this._userService.isCreator;
   }
 
   getData(){
+    this.isLoading=true;
     this.dashboardListings=[]
-    this._dashboardService.getDashboardData(this.searchString).subscribe((x)=>{
+    this._dashboardService.getDashboardData(this.searchString,this.selectedTab).subscribe((x)=>{
       if(x.success && x.data){
         this.dashboardListings=x.data;
       }
+      this.isLoading=false;
 
     })
   }
 
-  getStats(){
-    this._dashboardService.getDashboardStats().subscribe((x:any)=>{
+  getGenreList(){
+    this._dashboardService.getGenreList().subscribe((x:any)=>{
       if(x.success && x.data){
-        this.dashboardStata=x.data;
+        this.genreList=x.data;
       }
     })
   }
 
 
-  openVideo(videoID:number){
-    const result = window.location.origin + '/dashboard/view-video?media='+ videoID;
-    this.router.navigate(['/dashboard/view-video/'+ videoID]);
-    // window.open(result,"_self");
-  }
-
   searchMovie(){
     this.getData();
+  }
+
+  changeGenre(genreID:number){
+    this.selectedTab=genreID;
+    this.getData()
   }
 
 
@@ -65,23 +67,21 @@ export class DashboardOverviewComponent implements OnInit {
 }
 
 export class dashBoardData{
-  genre:string='';
-  movies:movieData[]=[];
-}
-
-export class movieData{
-  title:string='';
+  id:number=0;
+  ageRating:string='';
+  createdAt:string='';
+  createdBy:string='';
   producer:string='';
-  rating:string='';
+  publisher:string='';
   thumbnail:string='';
-  path:string='';
-  videoID:number=0;
-
+  videoTitle:string='';
+  videoURL:string='';
 }
 
 
-export class dashboardStatsData{
-  totalVideos: number=0;
-  genres: number=0;
-  yourVideos: number=0;
+
+
+export class genreList{
+  id: number=0;
+  genre: string='';
 }
