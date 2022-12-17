@@ -16,24 +16,26 @@ export class CreatorGuard implements CanActivate,CanActivateChild {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.checkCreator(state.url);
+    return this.isItCreator(state.url);
   }
 
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.checkCreator(state.url);
+    return this.isItCreator(state.url);
   }
 
 
-  async checkCreator(url: string): Promise<boolean>{
+  async isItCreator(url: string): Promise<boolean>{
     let isCreator=this._userService.isCreator;
     if(isCreator)
         return true;
-
-    this.router.navigate(['/login'], { queryParams: { returnUrl: url } });
-    return false;      
+    else{
+      this.router.navigate(['/login'], { queryParams: { returnUrl: url } });
+      return false; 
+    }
+           
 }
 
 

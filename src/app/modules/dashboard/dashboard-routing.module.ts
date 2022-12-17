@@ -9,10 +9,10 @@ import { CreatorGuard } from 'src/app/shared/guards/creator.guard';
 
 const routes: Routes = [
 
-  { path: '', component: DashboardOverviewComponent},
-  { path: 'upload', component: UploadVideoComponent},
-  { path: 'view-video/:mediaID', component: VideoModelComponent},
-  { path: 'my-videos', component: MyVideosComponent},
+  { path: '', component: DashboardOverviewComponent,canActivate:[AuthGuard]},
+  { path: 'upload', component: UploadVideoComponent,canActivate:[AuthGuard,CreatorGuard]},
+  { path: 'view-video/:mediaID', component: VideoModelComponent,canActivate:[AuthGuard]},
+  { path: 'my-videos', component: MyVideosComponent,canActivate:[AuthGuard,CreatorGuard]},
 ];
 
 @NgModule({
