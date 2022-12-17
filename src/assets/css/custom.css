@@ -5,7 +5,7 @@
     --bg-round-b: #04befe;
     --panel-color: #fff;
     --title: #444;
-    --bg-input: #e0e0e0;
+    --bg-input: #e8f0fe;
     --input-icon: #8a8a8a;
     --input: #333;
     --input-hover: #222;
@@ -111,6 +111,7 @@ Remove the margin in all browsers.
 
 body {
   margin: 0;
+  background-color: whitesmoke;;
 }
 
 /**
@@ -508,7 +509,7 @@ table {
   border-collapse: collapse;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -516,7 +517,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
-}
+} */
 
 /**
  * Reset links to optimize for opt-in styling instead of
@@ -1403,9 +1404,10 @@ video {
   .videos-container{
     grid-template-columns: repeat(4, minmax(0, 1fr));
     -moz-column-gap: 1rem;
-         column-gap: 1rem;
+     column-gap: 1rem;
     row-gap: 2.5rem;
     padding: 1.5rem;
+    height: calc(100vh - 110px);
   }
 }
 
@@ -1599,6 +1601,15 @@ video {
     font-size: 1.1rem;
   }
   
+  input:autofill {
+    border: 3px solid var(--bg-input);
+    background-color: var(--bg-input),
+}
+
+input:-webkit-autofill {
+  border: 3px solid var(--bg-input);
+  background-color: var(--bg-input),
+}
   .key {
     color: var(--key-color);
     text-decoration: none;
@@ -1634,21 +1645,21 @@ video {
     font-weight: 600;
     font-size: 1.1rem;
     color: var(--input);
-    background-color: white!important;
+    background-color: var(--bg-input);
   }
   input:-internal-autofill-selected{
-    background-color: white!important;
+    background-color: var(--bg-input);
   }
   
   .input-field input::placeholder {
     color: var(--input-hover);
     font-weight: 500;
-    background-color: white!important;
+    background-color: var(--bg-input);
 
   }
   
   .btn {
-    width: 150px;
+    width: auto;
     height: 49px;
     border: none;
     outline: none;

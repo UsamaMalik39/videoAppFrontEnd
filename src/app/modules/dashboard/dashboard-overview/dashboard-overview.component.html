@@ -11,26 +11,29 @@
  
      <!-- main videos container -->
      <div class="flex flex-col lg:ml-60 w-full lg:w-4/5 xl:w-5/6">
- 
+        
+          
      <!-- tags pills fixed navbar -->
      <div class="tags-container">
  
          <!-- one pill -->
-         <button class="text-sm bg-black py-1.5 px-3 rounded-full text-white">All</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">CSS</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Tailwind</button>
+         <button class="text-sm"
+         [ngClass]="selectedTab=='ALL' ? 
+                    ' bg-black py-1.5 px-3 rounded-full text-white '  : 
+                    ' bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150 ' " (click)="selectedTab='ALL'">All</button>
+         <button class="text-sm" 
+         [ngClass]="selectedTab=='CSS' ? 
+                    ' bg-black py-1.5 px-3 rounded-full text-white '  : 
+                    ' bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150 ' "  (click)="selectedTab='CSS'">CSS</button>
+         <!-- <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Tailwind</button>
          <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">HTML</button>
          <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Programs</button>
          <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Design</button>
          <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Website</button>
          <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">ReactJS</button>
          <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">UI</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Android</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Jetpack</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Bootstrap</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">JavaScript</button>
-         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">PHP</button>
-      </div>
+         <button class="text-sm bg-pillsBg hover:bg-gray-700 py-1 px-3 rounded-full border border-gray-700 transition duration-150">Android</button> -->
+       </div>
  
      <!-- videos container grid layout -->
      <div class="videos-container" id="videos-container">

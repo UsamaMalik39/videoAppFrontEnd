@@ -1,87 +1,66 @@
-<nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top justify-content-between">
-   <div>
-      <button class="btn btn-link btn-sm text-secondary order-1 order-sm-0" id="sidebarToggle">
-         <i class="fas fa-bars"></i>
-         </button> &nbsp;&nbsp;
-         <a class="navbar-brand mr-1"  routerLink="/dashboard">Video</a>
-   </div>
- 
-   <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
-      <li class="nav-item mx-1">
-         <a class="nav-link" routerLink="/dashboard/upload">
-         <i class="fas fa-plus-circle fa-fw"></i>
-         Upload Video
-         </a>
-      </li>
-      <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
-         <a class="nav-link dropdown-toggle user-dropdown-link" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img alt="Avatar" src="../../../../assets/img/user.svg"> 
-         {{ userName | titlecase}}
-         </a>
-      </li>
-   </ul>
-</nav>
-<div id="wrapper">
-   <div id="content-wrapper">
-     <form [formGroup]="uploadFileForm" (ngSubmit)="uploadFile()">
-       <div class="container-fluid upload-details">
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="main-title">
-                  <h6>Upload Details</h6>
-               </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="osahan-form">
-                     <div class="form-group">
-                        <label for="">Upload Video</label>
-                        <input type="file"
-                         placeholder="Select Video" 
-                         (change)="uploadMediaFile($event)" 
-                         class="email form-control" accept="video/mp4,video/x-m4v,video/*">
-                     </div>
-                </div>
-              
-            </div>
-            <div class="col-lg-6">
-                 <div class="osahan-form">
-                       <div class="form-group">
-                         <label for="">Upload Thumbnail</label>
-                         <input type="file" placeholder="Select Thumbnail"
-                          (change)="uploadThumbnailFile($event)" class="email form-control"
-                           accept="image/x-png,image/jpeg">
-                       </div>
+ <!-- top fixed navbar -->
+ <app-header></app-header>
+ <!-- navbar ends here -->
+
+ <!-- main container -->
+ <div class="flex flex-row">
+   <!-- left sidebar fixed -->
+   <app-sidebar></app-sidebar>
+
+   <!-- main videos container -->
+   <div class="flex flex-col lg:ml-60 w-full lg:w-4/5 xl:w-5/6">
+        <!-- videos container grid layout -->
+     <div class="videos-container" id="videos-container" style="margin-top: 56px;grid-template-columns: repeat(1, minmax(0, 1fr));">
+      <form [formGroup]="uploadFileForm" (ngSubmit)="uploadFile()">
+         <div class="container-fluid upload-details">
+           <div class="row">
+              <div class="col-lg-12">
+                 <div class="mb-3">
+                    <h2>Upload Details</h2>
                  </div>
-                             
-            
-           </div>
-            <div class="col-lg-12" *ngIf="videoLoading">
-               <div class="osahan-desc">Your Video is still uploading, please keep this page open until it's done.</div>
-            </div>
-         </div>
-         <hr>
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="osahan-form">
-                  <div class="row">
-                     <div class="col-lg-12">
-                        <div class="form-group">
-                           <label for="e1">Video Title</label>
-                           <input type="text" formControlName="title" placeholder="Enter video title" id="e1" class="form-control">
-                        </div>
-                     </div>
+              </div>
+              <div class="col-lg-12 mb-3">
+                  <div class="osahan-form">
+                       <div class="form-group">
+                          <label for="">Upload Video</label>
+                          <input type="file" placeholder="Select Video" (change)="uploadMediaFile($event)"  class="email form-control" accept="video/mp4,video/x-m4v,video/*">
+                       </div>
                   </div>
-                  <div class="row">
-                     <div class="col-lg-5">
-                        <div class="form-group">
-                           <label for="e7">Producer</label>
-                           <input type="text" formControlName="producer" placeholder="Enter producer name" id="e7" class="form-control">
-                        </div>
-                     </div>
-                     <div class="col-lg-4">
+                
+              </div>
+              
+           </div>
+      
+           <div class="row">
+              <div class="col-lg-12">
+                 <div class="osahan-form">
+                    <div class="row">
+                       <div class="col-lg-12 my-3">
+                          <div class="form-group">
+                             <label for="e1">Video Title</label>
+                             <input type="text" formControlName="title" placeholder="Enter video title" id="e1" class="form-control">
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-lg-5 mb-3">
+                          <div class="form-group">
+                             <label for="e7">Producer</label>
+                             <input type="text" formControlName="producer" placeholder="Enter producer name" id="e7" class="form-control">
+                          </div>
+                       </div>
+                       <div class="col-lg-5 mb-3">
+                          <div class="form-group">
+                             <label for="e7">Publisher</label>
+                             <input type="text" formControlName="publisher" placeholder="Enter Publisher Studio Name" id="e7" class="form-control">
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row">
+                     <div class="col-lg-3 mb-3">
                        <div class="form-group">
                          <label for="e4">Genre</label>
-                         <select id="e4" class="custom-select" formControlName="genre">
+                         <select id="e4" class="form-control custom-select" formControlName="genre">
                             <option value="" disabled="true">Select Genre</option>
                             <option value="Action">Action</option>
                             <option value="Comedy">Comedy</option>
@@ -93,10 +72,10 @@
                          </select>
                        </div>
                      </div>
-                     <div class="col-lg-3">
+                     <div class="col-lg-3 mb-3">
                         <div class="form-group">
                            <label for="e9">Age Rating</label>
-                           <select id="e9" class="custom-select"  placeholder="Select Age Rating"
+                           <select id="e9" class="form-control custom-select"  placeholder="Select Age Rating"
                              formControlName="rating">
                              <option value="" disabled="true">Select Age Rating</option>
                              <option value="PG">PG</option>
@@ -104,18 +83,30 @@
                            </select>
                         </div>
                      </div>
+                     <div class="col-lg-6 mb-3">
+                        <div class="osahan-form">
+                              <div class="form-group">
+                                <label for="">Thumbnail</label>
+                                <input type="file" placeholder="Select Thumbnail" (change)="uploadThumbnailFile($event)" class="email form-control" accept="image/x-png,image/jpeg">
+                              </div>
+                        </div>
+                     </div>
                   </div>
-               </div>
-               <div class="osahan-area text-center mt-3">
-                  <button class="btn btn-outline-primary" type="submit">Upload Video</button>
-               </div>
-               <hr>
-            </div>
-         </div>
-      </div>
-     </form>
+                 </div>
+                 <div class="osahan-area text-center mt-3">
+                    <button class="btn btn-outline-primary" type="submit">Upload Video</button>
+                 </div>
+                 
+                  <div class="col-lg-12" *ngIf="videoLoading">
+                     <div class="osahan-desc">Your Video is still uploading, please keep this page open until it's done.</div>
+                  </div>
+                 <hr>
+              </div>
+           </div>
+        </div>
+       </form>
+     </div>
+
       
    </div>
- </div>
-
- 
+</div>

@@ -46,6 +46,7 @@ export class UploadVideoComponent implements OnInit {
       producer: [null, [Validators.required]],
       genre: ["", [Validators.required]],
       rating: ["", [Validators.required]],
+      publisher: ["", [Validators.required]],
       url: [null],
       thumbnail: [null]
     });

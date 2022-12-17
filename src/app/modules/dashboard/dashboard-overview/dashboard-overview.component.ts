@@ -15,6 +15,7 @@ export class DashboardOverviewComponent implements OnInit {
   openDropDown:boolean=false;
   searchString:string='';
   isCreator:boolean=false;
+  selectedTab:string='ALL';
   dashboardStata: dashboardStatsData=new dashboardStatsData()
   constructor(                    
     private router:Router,

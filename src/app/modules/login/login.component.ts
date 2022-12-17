@@ -13,11 +13,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
  
-  signIn:boolean=true;
-  signUp:boolean=false;
+  success:boolean=false;
   emailLogin: FormGroup = new FormGroup({});
   emailSignUp: FormGroup = new FormGroup({});
-  newPasswordShow: boolean = false;
   myScriptElement: HTMLScriptElement;
 
 
@@ -56,9 +54,11 @@ export class LoginComponent implements OnInit {
     
     this.authService.signUpViaEmail(this.emailSignUp.value).subscribe((x: any) => {
       if (x.success && x.data) {
-        this.signUp=false;
-        this.signIn=true;
+        this.success=true;
         this.initializeForm();
+        setTimeout(()=>{
+          this.success=false;
+        },3000)
       }
     })
   }
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
     this._userService.email = user.email;
     this._userService.legalName = user.name;
     this._userService.userID = user.id;
-    this._userService.isCreator = user.type=='VIEWER' ? false:true;
+    this._userService.isCreator = user.isCreator
 
     this.router.navigate(['dashboard']);
 
