@@ -12,7 +12,7 @@
 
        <!-- right icons container  -->
        <div class="flex items-center space-x-3 sm:space-x-6 pr-4">
-           <i class="material-icons cursor-pointer" *ngIf="isCreator">video_call</i>
+           <i class="material-icons cursor-pointer" *ngIf="isCreator" [routerLink]="['/dashboard/upload']" routerLinkActive="router-link-active" >video_call</i>
 
            <img class="w-9 h-9 rounded-full object-cover cursor-pointer" src="./assets/images/hero.png" alt="" draggable="false">
        </div>
@@ -33,8 +33,10 @@
       <div class="videos-container bg-white h-auto" id="videos-container" style="margin-top: 56px;grid-template-columns: repeat(1, minmax(0, 1fr));">
             <div class="row">
                <div class="col-md-12">
-                  <video width="100%" height="150" controls controlsList="nodownload" class="single-video">
-                     <source  autoplay  [src]="videoData.videoURL" type="video/mp4">
+                  <video width="100%" height="150" controls controlsList="nodownload" 
+                  *ngIf="videoData.videoURL"
+                  class="single-video">
+                     <source   src="{{videoData.videoURL}}" type="video/mp4">
                   </video>
                   <h2>{{  videoData.title }}</h2>
                </div>
@@ -49,9 +51,7 @@
                         </div>
                      </div>
                      <div class="writing">
-                        <div contenteditable="true" [(ngModel)]="newComment" class="textarea" autofocus spellcheck="false">
-                           {{newComment}} 
-                        </div>
+                        <input contenteditable="true" [(ngModel)]="newComment" class="textarea">
                         <div class="footer">
                            <div class="group-button">
                               <button class="btn primary"  (click)="addNewComment()">Add</button>
